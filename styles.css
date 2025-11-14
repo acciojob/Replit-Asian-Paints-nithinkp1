@@ -1,4 +1,6 @@
- #grid-container {
+
+
+.grid-container {
             display: grid;
             grid-template-columns: repeat(3, 100px);
             gap: 10px;
@@ -20,3 +22,7 @@
         #controls {
             margin-top: 20px;
         }
+
+#reset_button{
+	border-radius:4px;
+}
