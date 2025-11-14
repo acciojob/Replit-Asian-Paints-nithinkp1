@@ -1,28 +1,28 @@
-//your JS code here. If required.
-document.getElementById("change_button").addEventListener("click", function () {
-  const blockId = document.getElementById("block_id").value.trim();
-  const color = document.getElementById("colour_id").value.trim();
+document.addEventListener("DOMContentLoaded", () => {
+    const changeBtn = document.getElementById("change_button");
+    const resetBtn = document.getElementById("Reset");
+    const gridItems = document.querySelectorAll(".grid-item");
 
-  // Reset all grid colors first
-  resetColors();
+    function resetColors() {
+        gridItems.forEach(item => {
+            item.style.backgroundColor = "transparent";
+        });
+    }
 
-  // Validate blockId (must be between 1 and 9)
-  const block = document.getElementById(blockId);
-  if (!block || isNaN(blockId) || blockId < 1 || blockId > 9) {
-    alert("Please enter a valid block ID between 1 and 9.");
-    return;
-  }
+    resetBtn.addEventListener("click", resetColors);
 
-  // Change background color of selected block
-  block.style.backgroundColor = color;
+    changeBtn.addEventListener("click", () => {
+        const blockId = document.getElementById("block_id").value;
+        const colorId = document.getElementById("colour_id").value;
+
+        resetColors();
+
+        if (blockId < 1 || blockId > 9) {
+            alert("Please enter a valid Block ID between 1 and 9");
+            return;
+        }
+
+        const block = document.getElementById(blockId);
+        block.style.backgroundColor = colorId;
+    });
 });
-
-document.getElementById("Reset").addEventListener("click", resetColors);
-
-// Helper function to clear all colors
-function resetColors() {
-  const gridItems = document.querySelectorAll(".grid-item");
-  gridItems.forEach(item => {
-    item.style.backgroundColor = "transparent";
-  });
-}
